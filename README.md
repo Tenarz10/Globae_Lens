@@ -35,7 +35,7 @@ This project uses React Router's hash routing. Film links can be refreshed or sh
 
 Run `npm run build` and publish the generated `dist/` directory:
 
-- **GitHub Pages:** Enable Pages for the repository and publish the Vite build output using GitHub Actions. The relative Vite asset base and hash routes support repository subpaths and direct film links.
+- **GitHub Pages:** The included `.github/workflows/deploy.yml` builds the Vite app and publishes `dist/` whenever changes are pushed to `main`. In the repository's **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**. The relative Vite asset base and hash routes support repository subpaths and direct film links.
 - **Netlify:** Set the build command to `npm run build` and the publish directory to `dist`.
 - **Vercel:** Import the project with the Vite framework preset, build command `npm run build`, and output directory `dist`.
 
