@@ -44,12 +44,20 @@ function VideoDetails() {
           <div className="video-player">
             {video.embedUrl ? (
               <iframe
-                src={video.embedUrl}
-                title={`Video player: ${video.title}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
+  src={video.embedUrl}
+  title={`Video player: ${video.title}`}
+  loading="eager"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowFullScreen
+  referrerPolicy="strict-origin-when-cross-origin"
+  style={{
+    display: "block",
+    width: "100%",
+    height: "100%",
+    border: "none",
+    backgroundColor: "#000",
+  }}
+/>
             ) : video.videoUrl && !playbackError ? (
               <video key={video.videoUrl} controls playsInline preload="metadata" poster={video.thumbnail} onError={() => setPlaybackError(true)}>
                 <source src={video.videoUrl} />
