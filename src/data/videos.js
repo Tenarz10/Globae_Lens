@@ -1,3 +1,4 @@
+import kalioCover from '../assets/kalio-cover.png'
 
 const records = [
   // Event recaps
@@ -242,16 +243,17 @@ export const videos = records.map(([title, category, year, location, duration, e
   const imageIndex = categoryImageIndexes[category] || 0
   categoryImageIndexes[category] = imageIndex + 1
   const image = images[imageIndex % images.length]
+  const isKalio = title === 'Kalio — Brand Content'
 
   return {
     id: String(index + 1),
     title,
     description: descriptions[category],
     category,
-    thumbnail: image.url,
-    thumbnailAlt: image.alt,
-    thumbnailCredit: image.credit,
-    thumbnailSource: image.source,
+    thumbnail: isKalio ? kalioCover : image.url,
+    thumbnailAlt: isKalio ? 'Pilates session with Kalio' : image.alt,
+    thumbnailCredit: isKalio ? null : image.credit,
+    thumbnailSource: isKalio ? null : image.source,
     videoUrl: null,
     embedUrl: externalLink?.includes('/drive/folders/') ? '' : `https://drive.google.com/file/d/${externalLink.match(/\/d\/([^/]+)/)?.[1]}/preview`,
     externalLink,
